@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact | Pretty Multi-Page Site</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a href="index.html" class="brand">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=200&auto=format&fit=crop&q=60" alt="" class="brand-logo" />
+            <span class="brand-name">My Website</span>
+        </a>
+        <nav aria-label="Primary">
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav">☰</button>
+            <ul id="primary-nav" class="nav">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="contact.html" class="nav-link is-active">Contact</a></li>
+                <li><a href="register.html" class="nav-link">Register</a></li>
+                <li><a href="dynamic.html" class="nav-link">Dynamic</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <section class="page-hero">
+        <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?w=1600&auto=format&fit=crop&q=60" alt="Phone and notebook on desk" />
+        <div class="page-hero-overlay">
+            <div class="container">
+                <h1>Welcome to the Contact Page</h1>
+                <p>Save contacts locally. Click to select and delete.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container prose">
+        <h2>Your Contacts</h2>
+        <div id="contacts" class="card">
+            <div class="controls contacts-controls">
+                <label for="contactName" class="visually-hidden">Name</label>
+                <input type="text" id="contactName" placeholder="Name" />
+                <label for="contactEmail" class="visually-hidden">Email</label>
+                <input type="email" id="contactEmail" placeholder="Email (optional)" />
+                <button id="addContact" class="btn">Add Contact</button>
+                <button id="deleteContact" class="btn btn-outline" disabled>Delete Selected</button>
+            </div>
+
+            <ul id="contactList" class="list" aria-live="polite" aria-relevant="additions"></ul>
+            <div id="contactCountNote" class="muted small" aria-live="polite"></div>
+        </div>
+    </section>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <p>&copy; <span id="year"></span> My Website</p>
+    </div>
+</footer>
+
+<!-- Interactive script is needed here as well -->
+<script src="script.js" defer></script>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const btn = document.querySelector('.nav-toggle');
+    const nav = document.getElementById('primary-nav');
+    btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('open');
+    });
+</script>
+</body>
+</html>
