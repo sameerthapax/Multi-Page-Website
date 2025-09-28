@@ -1,0 +1,290 @@
+{
+  "info": {
+    "name": "Deliverable5",
+    "_postman_id": "lectureq-collection",
+    "description": "CRUD endpoints for Users, Courses, Questions, Rooms",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "http://localhost:4000/health"
+      }
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "List Users",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/users"
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"John Doe\",\"email\":\"john@example.com\",\"role\":\"student\"}"
+            },
+            "url": "http://localhost:4000/api/users"
+          }
+        },
+        {
+          "name": "Get User",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/users/{{userId}}"
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"John Updated\"}"
+            },
+            "url": "http://localhost:4000/api/users/{{userId}}"
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:4000/api/users/{{userId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Courses",
+      "item": [
+        {
+          "name": "List Courses",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/courses"
+          }
+        },
+        {
+          "name": "Create Course",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"code\":\"CS101\",\"title\":\"Intro to CS\",\"instructor\":\"{{instructorId}}\",\"term\":\"Fall 2025\"}"
+            },
+            "url": "http://localhost:4000/api/courses"
+          }
+        },
+        {
+          "name": "Get Course",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/courses/{{courseId}}"
+          }
+        },
+        {
+          "name": "Update Course",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"title\":\"Intro to CS (Updated)\"}"
+            },
+            "url": "http://localhost:4000/api/courses/{{courseId}}"
+          }
+        },
+        {
+          "name": "Delete Course",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:4000/api/courses/{{courseId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Questions",
+      "item": [
+        {
+          "name": "List Questions",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/questions"
+          }
+        },
+        {
+          "name": "List Questions by Course",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/questions?courseId={{courseId}}"
+          }
+        },
+        {
+          "name": "Create Question",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"course\":\"{{courseId}}\",\"author\":\"{{studentId}}\",\"text\":\"What is chain rule?\",\"anonymous\":true}"
+            },
+            "url": "http://localhost:4000/api/questions"
+          }
+        },
+        {
+          "name": "Get Question",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/questions/{{questionId}}"
+          }
+        },
+        {
+          "name": "Update Question",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"status\":\"addressed\"}"
+            },
+            "url": "http://localhost:4000/api/questions/{{questionId}}"
+          }
+        },
+        {
+          "name": "Delete Question",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:4000/api/questions/{{questionId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Rooms",
+      "item": [
+        {
+          "name": "List Rooms",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/rooms"
+          }
+        },
+        {
+          "name": "Create Room",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\":\"Lecture Hall A\",\"capacity\":200}"
+            },
+            "url": "http://localhost:4000/api/rooms"
+          }
+        },
+        {
+          "name": "Get Room",
+          "request": {
+            "method": "GET",
+            "url": "http://localhost:4000/api/rooms/{{roomId}}"
+          }
+        },
+        {
+          "name": "Update Room",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"capacity\":250}"
+            },
+            "url": "http://localhost:4000/api/rooms/{{roomId}}"
+          }
+        },
+        {
+          "name": "Delete Room",
+          "request": {
+            "method": "DELETE",
+            "url": "http://localhost:4000/api/rooms/{{roomId}}"
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "userId",
+      "value": ""
+    },
+    {
+      "key": "instructorId",
+      "value": ""
+    },
+    {
+      "key": "courseId",
+      "value": ""
+    },
+    {
+      "key": "studentId",
+      "value": ""
+    },
+    {
+      "key": "questionId",
+      "value": ""
+    },
+    {
+      "key": "roomId",
+      "value": ""
+    }
+  ]
+}
